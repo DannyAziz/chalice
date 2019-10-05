@@ -429,7 +429,7 @@ class Response(object):
             'statusCode': self.status_code,
             'body': body
         }
-        if binary_types is not None:
+        if binary_types is not None and self.status_code not in [301, 302]:
             self._b64encode_body_if_needed(response, binary_types)
         return response
 
